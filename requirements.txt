@@ -1,0 +1,8 @@
+Werkzeug==0.16.0
+insightface==0.1.5
+numpy==1.17.2
+opencv_python==4.2.0.32
+Flask==1.1.1
+imutils==0.5.3
+mxnet==1.6.0
+requests==2.23.0
