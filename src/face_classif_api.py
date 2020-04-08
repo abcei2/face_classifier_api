@@ -37,6 +37,7 @@ def not_busy():
 	print("NOT BUSY")
 		
 
+
 @app.route('/classify_faces/', methods=['POST'])
 def upload_file():
 	# check if the post request has the file part
@@ -80,6 +81,13 @@ def upload_file():
 		not_busy()
 		return resp
 
+
+@app.route('/delete_images/', methods=['GET'])
+def delete_images():
+	resp = jsonify({'message' : do_delete_images()})
+	resp.status_code = 200
+	return resp
+	
 @app.route('/update_model/', methods=['GET'])
 def update_model():
 	

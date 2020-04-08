@@ -48,7 +48,7 @@ def scaller_conc(img):
     else:
         return img
 
-def update_model(recognizer,WIDTHDIVIDER = 4):
+def update_model_face(recognizer,WIDTHDIVIDER = 4):
 
 
    

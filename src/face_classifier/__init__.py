@@ -5,6 +5,7 @@ import numpy as np
 from face_classifier.classifer_util import *
 from face_classifier.register_utils import *
 import os, os.path
+import shutil
 import insightface
 
 
@@ -15,6 +16,14 @@ recognizer.prepare(ctx_id = -1)
 
 load_model()
 
+def do_delete_images():
+    try:
+        shutil.rmtree("dataset")
+        os.mkdir("dataset")
+    except:
+        print("dir already deleted")
+    return "done"
+    
 def do_detect(img):
     return classify_face(recognizer,img)
 
@@ -32,5 +41,5 @@ def do_register(img,name,WIDTHDIVIDER=1):
 
 
 def do_update():
-    update_model(recognizer)
+    update_model_face(recognizer)
     load_model()
