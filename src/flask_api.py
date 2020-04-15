@@ -118,6 +118,13 @@ def register_face():
         resp.status_code = 400
         return resp
 
+    try:
+        name = json.loads(request.form.get('json', '{}'))["face_name"]
+    except KeyError:
+        resp = jsonify({'message': 'No face_name in request'})
+        resp.status_code = 400
+        return resp
+
     file_1 = request.files['file']
     if file_1.filename == '':
         resp = jsonify({'message': 'No file selected for uploading'})
@@ -133,6 +140,9 @@ def register_face():
 
     filename = secure_filename(file_1.filename)
     file_1.save(os.path.join("./", filename))
+
+    img = cv2.imread(f"./{filename}")
+    do_register(img, name)
 
     resp = jsonify({'message': "Success upload"})
     resp.status_code = 200
